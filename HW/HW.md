@@ -27,11 +27,27 @@
 
     class Topping(models.Model):
         name = models.CharField(max_length=200)
+
         def __str__(self):
             return self.name
 
     class Pizza(models.Model):
-       
+        name = models.CharField(max_length=200)
         toppings = models.ManyToManyField(Topping)
+        time_of_creation = models.DateField(blank=True, null=True)
+
+        def __str__(self):
+            return self.name
 
     ```
+
+    8. A one-to-one relationship describes a unique connection between model A and model B. We use when it corresponds to one specific record in another table. For example, each individual only has one biological mother and one biological father.
+
+    9. ```
+        from music.models import Artist
+        ```
+    10. Meta class is an inner class for anything that is not a field. You use it to translate info about how the model behaves to the framework. 
+
+    11. An example of a model method is __str__() which we use to return a string representation of an object. For an album we may want to return the full name of the album or even set a specific url for that album using get_absolute_url().
+
+    12. An example of model inheritance is the relationship between a place and a restaurant. A restaurant is a model all on it's own but inherits the attributes of the place model as well. This is a good way of creating modular code and predefining the general attributes needed for each child model.
