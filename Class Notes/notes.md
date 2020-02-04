@@ -23,4 +23,15 @@
         "last_name" varchar(30) NOT NULL
         );
     ```
+
+- command for creating a project
+    - django-admin startproject "project name"
+- command for creating a new app within the project
+    - python3 manage.py startapp "app name"
+- command for creating a super user
+    - python3 manage.py createsuperuser
+- django uses urlconfs to map urlpattern to views
+- def view(response):
+    return HttpResponse("Whatever the view is %s." % corresponding field)
+- path('route', corresponding view, name="whatever i name it")
     
