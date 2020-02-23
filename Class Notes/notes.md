@@ -31,7 +31,52 @@
 - command for creating a super user
     - python3 manage.py createsuperuser
 - django uses urlconfs to map urlpattern to views
-- def view(response):
+- def view(request, id):
     return HttpResponse("Whatever the view is %s." % corresponding field)
 - path('route', corresponding view, name="whatever i name it")
+
+- Model migrations copy over the changes I make to the model into the database schema.
+    - python3 manage.py make_migrations
+    - python3 manage.py migrate
+
+- the through model keeps track of data about the relationship between the many to many models
     
+```
+Employee
+    - name => CharField
+    - str function return name
+    - job skills => Charfield or Textfield?
+
+Company
+    - employees - manytomany field
+    - name => Charfield
+    - str function to return name
+
+Work Experience
+    - person -> Foreignkey
+    - company -> Foreign
+    - Description of role => Charfield
+    - time spent at company 
+
+Work Experience
+```
+
+```
+from django.shortcuts import render, get_object
+from django.views.generic.detail import DetailView
+
+class SongDetailView(DetailView):
+
+    model = Song
+
+path('song/<int:pk>', views.SongDetailView.as_view(), name='song-detail')
+    
+```
+What is a form and how do they work?
+- Where do we send the data?
+- Which method do we use to send the data?
+    - use post to change the state of the system
+        - i.e a request that saves data to db
+    - use get for requests that do not affect the state of the system
+        - i.e searching or filtering
+- a form is a collection of elements inside of the form tag that takes input from the user and stores it in the database with a post request. It also usually has a submit button that tells the browser to send the data to the server
